@@ -6,27 +6,25 @@ import java.util.List;
 
 public final class EmployeeList {
 	
-	   private final List<String> employeeName = new ArrayList<>();
+	   private final List<String> employeeName;
 	   
-	   
-		public EmployeeList() {
-			this.employeeName.add("Ewa");
-		}
-
 		public EmployeeList(List<String> list) {
+			employeeName = new ArrayList<>();
 			for(int i=0; i<list.size(); i++){
 				employeeName.add(list.get(i));
 			}
 		}
 		
 		public final EmployeeList addName(String name) {
-			employeeName.add(name);
-			return new EmployeeList(employeeName);
+			final List<String> cloneEmployeeList = getAllList();
+			cloneEmployeeList.add(name);
+			return new EmployeeList(cloneEmployeeList);
 		}
 
 		public final EmployeeList removeEmployeeName(String name) {
-			employeeName.remove(name);
-			return new EmployeeList(employeeName);
+			final List<String> cloneEmployeeList = getAllList();
+			cloneEmployeeList.remove(name);
+			return new EmployeeList(cloneEmployeeList);
 		}
 		
 		public String getEmployeeName(int index){
@@ -39,7 +37,6 @@ public final class EmployeeList {
 		
 		public List<String> getAllList() {
 			return clone(employeeName);
-
 		}
 		
 		private List<String> clone(List<String> source) {
