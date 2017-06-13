@@ -1,20 +1,26 @@
 import java.util.ArrayList;
 import java.util.List;
 
-public class Immutable {
-	
-	   private final List<String> employeeName = new ArrayList<>();
-	   private static Immutable immutable = null;
+public class ThreadSafe {
+	 private final List<String> employeeName = new ArrayList<>();
+	   private static ThreadSafe threadSafe = null;
 	   
-		private Immutable() {
+		private ThreadSafe() {
 			this.employeeName.add("Ewa");
 		}
 
-		public static Immutable getInstance() {
-			if (immutable == null) {
-				immutable = new Immutable();
+		public static ThreadSafe getInstance() {
+			if (threadSafe == null) {
+				threadSafe = new ThreadSafe();
 			} 
-			return immutable;
+			return threadSafe;
+		}
+		public synchronized void addName(String name) {
+			employeeName.add(name);
+		}
+
+		public synchronized void removeEmployeeName(String name) {
+			employeeName.remove(name);
 		}
 		
 		public String getEmployeeName(int index){
@@ -36,5 +42,4 @@ public class Immutable {
 			});
 			return destination;
 		}
- 
 }
