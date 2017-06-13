@@ -10,7 +10,8 @@ public class MainEmployee {
 		main.print(employeeList.getAllList(), " Zawartoœæ listy");
 		
 		employeeList.addName("Darek");
-		main.print(employeeList.getAllList(),"Dodajê Darek");
+		employeeList.addName("Edek");
+		main.print(employeeList.getAllList(),"Dodajê Darek i Edek");
 
 		employeeList.removeEmployeeName("Ewa");
 		main.print(employeeList.getAllList(), "Usuwam Ewa");

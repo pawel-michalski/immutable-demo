@@ -13,20 +13,20 @@ public final class EmployeeList {
 			this.employeeName.add("Ewa");
 		}
 
-		public final List<String> addName(String name) {
-			final List<String> newList = clone(employeeName);
-			newList.add(name);
-			employeeName.removeAll(employeeName);
-			employeeName.addAll(newList);
-			return employeeName;
+		public EmployeeList(List<String> list) {
+			for(int i=0; i<list.size(); i++){
+				employeeName.add(list.get(i));
+			}
+		}
+		
+		public final EmployeeList addName(String name) {
+			employeeName.add(name);
+			return new EmployeeList(employeeName);
 		}
 
-		public final List<String> removeEmployeeName(String name) {
-			final List<String> newList = clone(employeeName);
-			newList.remove(name);
-			employeeName.removeAll(employeeName);
-			employeeName.addAll(newList);
-			return employeeName;
+		public final EmployeeList removeEmployeeName(String name) {
+			employeeName.remove(name);
+			return new EmployeeList(employeeName);
 		}
 		
 		public String getEmployeeName(int index){
@@ -39,6 +39,7 @@ public final class EmployeeList {
 		
 		public List<String> getAllList() {
 			return clone(employeeName);
+
 		}
 		
 		private List<String> clone(List<String> source) {
